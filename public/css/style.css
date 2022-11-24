@@ -74,6 +74,13 @@
     position: absolute;
 
     bottom: 0;
-    right: 200px;
+    right: 50px;
     font-size: 30px;
+    
+}
+.vermelho{
+    color: red;
+}
+.verde {
+    color: green;
 }
