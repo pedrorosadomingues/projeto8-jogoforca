@@ -18,14 +18,14 @@ export default function App() {
   return (
     <div className="App">
       <Jogo 
-      arrayPalavraObj={arrayPalavraObj} //palavra sorteada em forma de array com objetos { letra: , acertou:  } para o componente Jogo usar como condicao na renderizacao da palavra
+      palavraState={palavraState} //palavra sorteada em forma de array com objetos { letra: , acertou:  } para o componente Jogo usar como condicao na renderizacao da palavra
       jogoState={jogoState} //  estado controlador do inicio do jogo  manipulado pelo botao do componente Jogo
       setJogoState={setJogoState} // funcao que altera estado controlador do inicio do jogo
       forcaState={forcaState} // estado que altera SRC da imagem da forca
       />
       <Letras
         arrayLetras={arrayLetras} // array com as letras da palavra selecionada para componente encontrar indices de letras repetidas
-        arrayPalavraObj={arrayPalavraObj} // //palavra sorteada em forma de array com objetos { letra: , acertou:  } para o componente Letras manipular o estado da palavra oculta no jogo.
+        palavraState={palavraState} // //palavra sorteada em forma de array com objetos { letra: , acertou:  } para o componente Letras manipular o estado da palavra oculta no jogo.
         setPalavraState={setPalavraState} // funcao que altera o estado da palavra oculta no jogo
         jogoState={jogoState}  
         setJogoState={setJogoState} 

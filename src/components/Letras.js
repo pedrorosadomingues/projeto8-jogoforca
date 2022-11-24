@@ -13,7 +13,7 @@ const arrayImagens = [
     'assets/forcaV.png',
     'assets/forcaFinal.svg'] //array com as imagens da forca
 
-export default function Letras({ arrayLetras, setPalavraState, jogoState, setJogoState, arrayPalavraObj, setForcaState, forcaState }) {
+export default function Letras({ arrayLetras, setPalavraState, jogoState, setJogoState, palavraState, setForcaState, forcaState }) {
     const [alfabetoState, setAlfabetoState] = useState(arrayAlfabetoObj); // estado com o alfabeto em forma de array com objetos { letra: , selecionado: false } 
     const acertos = jogoState.contadorAcertos; 
 
@@ -31,8 +31,8 @@ export default function Letras({ arrayLetras, setPalavraState, jogoState, setJog
         })
 
         indexEcontrados.forEach((i) => setPalavraState([
-            ...arrayPalavraObj,
-            arrayPalavraObj[i].acertou = true,
+            ...palavraState,
+            palavraState[i].acertou = true,
         ])) //altera o estado da palavra sorteada para mostrar as letras acertadas
 
         indexEcontrados.forEach((i) => setJogoState({...jogoState, contadorAcertos: acertos + indexEcontrados.length})) //incrementa o contador de acertos
