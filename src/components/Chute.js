@@ -5,7 +5,7 @@ export default  function Chute({ chuteState, setChuteState , palavra , jogoState
     }
 
     function chutar() {
-        if (jogoState.contadorAcertos === palavra.length) return
+        if (jogoState.contadorAcertos === palavra.length || !jogoState.status) return
         if(chuteState === palavra ){
             setJogoState({status:true , contadorAcertos: palavra.length});
         } else {

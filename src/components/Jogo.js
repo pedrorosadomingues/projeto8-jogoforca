@@ -10,7 +10,7 @@ export default function Jogo({ arrayPalavraObj, jogoState, setJogoState, forcaSt
                 {arrayPalavraObj.map((l, index) => <span
                     key={index}
                     className={jogoState.status ? null : "hidden"}>
-                    {l.acertou || forcaState.contadorErros === 6 || jogoState.contadorAcertos === arrayPalavraObj.length ? l.letra : ` _`}
+                    {l.acertou || forcaState.contadorErros === 6 || jogoState.contadorAcertos === arrayPalavraObj.length ? ' ' + l.letra : ` _`}
                 </span>)}
             </div>
         </div>
