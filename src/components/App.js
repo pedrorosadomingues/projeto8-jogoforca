@@ -22,6 +22,7 @@ export default function App() {
       jogoState={jogoState} //  estado controlador do inicio do jogo  manipulado pelo botao do componente Jogo
       setJogoState={setJogoState} // funcao que altera estado controlador do inicio do jogo
       forcaState={forcaState} // estado que altera SRC da imagem da forca
+      palavra={palavra} // palavra sorteada
       />
       <Letras
         arrayLetras={arrayLetras} // array com as letras da palavra selecionada para componente encontrar indices de letras repetidas

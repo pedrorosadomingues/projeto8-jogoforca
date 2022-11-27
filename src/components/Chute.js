@@ -15,8 +15,10 @@ export default  function Chute({ chuteState, setChuteState , palavra , jogoState
             type="text" 
             name="chute" 
             onChange={(e)=> setChuteState(e.target.value)}
-            value={chuteState} />
-            <button onClick={chutar}>Chutar</button>
+            value={chuteState}
+            data-test="guess-input" 
+            />
+            <button onClick={chutar} data-test="guess-button">Chutar</button>
         </div>
     )
 }

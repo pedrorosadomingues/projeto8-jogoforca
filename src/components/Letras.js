@@ -45,7 +45,7 @@ export default function Letras({ arrayLetras, setPalavraState, jogoState, setJog
     return (
         <div id="teclado">
             {alfabetoState.map((l) => l.letra !== undefined ? //condicao para prevenir renderizacao de um botao a mais //
-                <button
+                <button data-test="letter"
                     onClick={() => encontraLetra(l.letra, l.selecionada)}
                     className={!jogoState.status || l.selecionada // jogo nao iniciado ou o botao  selecionado //
                         ? "botao-selecionado" : "botao-nao-selecionado"}
