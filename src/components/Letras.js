@@ -19,8 +19,9 @@ export default function Letras({ arrayLetras, setPalavraState, jogoState, setJog
 
     function encontraLetra(letra, selecionada) {
         const indexEcontrados = [];//array que recebe os indices das letras repetidas na palavra sorteada
+
         
-        if (!jogoState.status || selecionada || forcaState.contadorErros === 6 || jogoState.contadorAcertos === arrayLetras.length ) return; //se o jogo nao tiver iniciado nao faz nada
+        if (!jogoState.status || selecionada || forcaState.contadorErros === 6 || jogoState.contadorAcertos === arrayLetras.length || jogoState.contadorAcerto === palavraState.length) return; //se o jogo nao tiver iniciado nao faz nada
         arrayLetras.forEach((i, index) => {
             if (i === letra.toLowerCase()) {
                 indexEcontrados.push(index)
