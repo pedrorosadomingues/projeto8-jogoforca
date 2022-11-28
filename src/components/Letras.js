@@ -1,8 +1,7 @@
-import { useState } from "react";
 
 const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); //array com todas as letras do alfabeto
 const arrayAlfabetoObj = []; //array que recebe os objetos com as letras e o estado de selecionado { letra: , selecionado: false} //
-alfabeto.forEach((i) => arrayAlfabetoObj.push({ letra: i, selecionada: false })); //cria um objeto para cada letra e adiciona ao array de objetos{ letra: , selecionado: false}
+alfabeto.forEach((i) => i !== undefined ? arrayAlfabetoObj.push({ letra: i, selecionada: false }): null); //cria um objeto para cada letra e adiciona ao array de objetos{ letra: , selecionado: false}
 
 const arrayImagens = [
     'assets/forca.svg',
@@ -13,17 +12,18 @@ const arrayImagens = [
     'assets/forcaV.png',
     'assets/forcaFinal.svg'] //array com as imagens da forca
 
-export default function Letras({ arrayLetras, setPalavraState, jogoState, setJogoState, palavraState, setForcaState, forcaState }) {
-    const [alfabetoState, setAlfabetoState] = useState(arrayAlfabetoObj); // estado com o alfabeto em forma de array com objetos { letra: , selecionado: false } 
+export default function Letras({  arrayLetras, setPalavraState, jogoState, setJogoState, palavraState, setForcaState, forcaState,alfabetoState, setAlfabetoState }) {
+    let indexEcontrados = [];//array que recebe os indices das letras repetidas na palavra sorteada
     const acertos = jogoState.contadorAcertos; 
-
+   
     function encontraLetra(letra, selecionada) {
-        const indexEcontrados = [];//array que recebe os indices das letras repetidas na palavra sorteada
-
+      
+       
         
         if (!jogoState.status || selecionada || forcaState.contadorErros === 6 || jogoState.contadorAcertos === arrayLetras.length || jogoState.contadorAcerto === palavraState.length) return; //se o jogo nao tiver iniciado nao faz nada
         arrayLetras.forEach((i, index) => {
-            if (i === letra.toLowerCase()) {
+            if ( i !== undefined && i === letra.toLowerCase()) {
+    
                 indexEcontrados.push(index)
             }
             if (!arrayLetras.includes(letra.toLowerCase())) {
@@ -31,14 +31,14 @@ export default function Letras({ arrayLetras, setPalavraState, jogoState, setJog
             }
         })
 
-        indexEcontrados.forEach((i) => setPalavraState([
+        indexEcontrados.forEach((i) => i !== undefined ? setPalavraState([
             ...palavraState,
             palavraState[i].acertou = true,
-        ])) //altera o estado da palavra sorteada para mostrar as letras acertadas
+        ]) : null) //altera o estado da palavra sorteada para mostrar as letras acertadas
 
         indexEcontrados.forEach((i) => setJogoState({...jogoState, contadorAcertos: acertos + indexEcontrados.length})) //incrementa o contador de acertos
         const indexLetra = alfabeto.indexOf(letra); //encontra o indice da letra no array alfabeto para aplicar o estilo selecionado no botao
-        if (indexLetra !== -1) {
+        if (indexLetra !== -1 && letra !== undefined ) {
             setAlfabetoState([...arrayAlfabetoObj, arrayAlfabetoObj[indexLetra].selecionada = true])
         }
     }

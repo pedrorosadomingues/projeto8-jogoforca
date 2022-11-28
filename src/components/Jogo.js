@@ -1,15 +1,25 @@
-import palavra from '../utils/palavras'; // importa palavra ja sorteada
-const arrayLetras = palavra.split(''); //transforma a palavra sorteada em um array de strings para ser manipulado com metodos de array
-const arrayPalavraObj = []; //array que recebera os objetos com as letras da palavra sorteada e o estado de acerto  { letra: , acerto: false }
-arrayLetras.forEach((i) => arrayPalavraObj.push({ letra: i, acertou: false , contadorAcertos:0})); //cria um objeto { letra: , acerto: false} para cada letra da palavra sorteada e adiciona ao array de objetos.
+import palavras from '../utils/palavras'; // importa array com todas as palavras
 
-export default function Jogo({ palavraState, jogoState, setJogoState,setForcaState, setChuteState,setPalavraState, forcaState, palavra }) {
+export default function Jogo({setArrayLetrasState, palavraState, jogoState, setJogoState,setForcaState, setChuteState,setPalavraState, forcaState, palavra, setAlfabetoState }) {
     function iniciarJogo() {
+       
+        const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); //array com todas as letras do alfabeto
+        const arrayAlfabetoObj = []; //array que recebe os objetos com as letras e o estado de selecionado { letra: , selecionado: false} //
+        alfabeto.forEach((i) => arrayAlfabetoObj.push({ letra: i, selecionada: false }))
         if ( jogoState.contadorAcertos === palavra.length ) {
+            const palavraNova = palavras[Math.floor(Math.random() * palavras.length)];
+            const arrayLetras = palavraNova.split(''); //transforma a palavra sorteada em um array de strings para ser manipulado com metodos de array
+        const arrayPalavraObj = []; //array que recebera os objetos com as letras da palavra sorteada e o estado de acerto  { letra: , acerto: false }
+        arrayLetras.forEach((i) => arrayPalavraObj.push({ letra: i, acertou: false , contadorAcertos:0})); //cria um objeto { letra: , acerto: false} para cada letra da palavra sorteada e adiciona ao array de objetos.
+        console.log(arrayAlfabetoObj)
+
+            setPalavraState(arrayPalavraObj);
             setJogoState({status:false , contadorAcertos:0});
             setForcaState({imagem:'assets/forca.svg' , contadorErros:0});
             setChuteState('');
-            setPalavraState(arrayPalavraObj);
+            setAlfabetoState(arrayAlfabetoObj);
+            setArrayLetrasState(arrayLetras);
+            
         }
         setJogoState({status:true , contadorAcertos:0});
     }
